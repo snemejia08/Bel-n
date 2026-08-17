@@ -35,43 +35,112 @@ const PAGINAS = {
     'miercoles-testimonio': { titulo: 'Miércoles de Testimonio', nivel: 2 }
 };
 
-function showPage(pageId) {
-    // 1. Ocultar todas las páginas
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(p => p.classList.remove('active'));
+// Estado para controlar la página activa actualmente
+let _currentPageId = 'home';
 
-    // 2. Mostrar la página seleccionada si existe
+// Control de barra de progreso superior
+function triggerPageProgressBar() {
+    let bar = document.getElementById('pageProgressBar');
+    if (!bar) {
+        bar = document.createElement('div');
+        bar.id = 'pageProgressBar';
+        document.body.prepend(bar);
+    }
+    bar.classList.add('animating');
+    bar.style.width = '0%';
+    bar.style.opacity = '1';
+
+    // Rápido avance a 65%
+    setTimeout(() => {
+        bar.style.width = '68%';
+    }, 40);
+
+    // Completar a 100% y desvanecer
+    setTimeout(() => {
+        bar.style.width = '100%';
+        setTimeout(() => {
+            bar.style.opacity = '0';
+            setTimeout(() => {
+                bar.classList.remove('animating');
+                bar.style.width = '0%';
+            }, 300);
+        }, 220);
+    }, 280);
+}
+
+function showPage(pageId) {
+    // Prevenir apertura de URLs externas a través de showPage
+    if (pageId && (pageId.startsWith('http://') || pageId.startsWith('https://'))) {
+        window.open(pageId, '_blank');
+        return;
+    }
+
+    const pages = document.querySelectorAll('.page');
     const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-        targetPage.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
+
+    if (!targetPage) {
         console.warn(`⚠️ Página "${pageId}" no encontrada`);
         return;
     }
 
-    // 3. Actualizar título de la página
+    // Iniciar barra de progreso
+    triggerPageProgressBar();
+
+    const currentActive = document.querySelector('.page.active');
+
+    if (currentActive && currentActive !== targetPage) {
+        // Salida suave con clase page-exit
+        currentActive.classList.add('page-exit');
+
+        setTimeout(() => {
+            pages.forEach(p => {
+                p.classList.remove('active');
+                p.classList.remove('page-exit');
+            });
+
+            targetPage.classList.add('active');
+            _currentPageId = pageId;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            _afterShowPage(pageId);
+        }, 170);
+    } else {
+        // Re-activar si es la misma página o carga inicial
+        pages.forEach(p => {
+            p.classList.remove('active');
+            p.classList.remove('page-exit');
+        });
+
+        // Forzar reflow para reiniciar animación
+        void targetPage.offsetWidth;
+        targetPage.classList.add('active');
+        _currentPageId = pageId;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        _afterShowPage(pageId);
+    }
+}
+
+function _afterShowPage(pageId) {
+    // Actualizar título de la página
     const titulo = PAGINAS[pageId]?.titulo || 'IASD Belén';
     document.title = `${titulo} · IASD Belén`;
 
-    // 4. Actualizar estados activos en navbar
+    // Actualizar estados activos en navbar
     const navButtons = document.querySelectorAll('.nav-btn');
     navButtons.forEach(btn => {
         btn.classList.remove('active');
-        // Buscar el botón que tiene el onclick correspondiente
         if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${pageId}'`)) {
             btn.classList.add('active');
         }
     });
 
-    // 5. Cerrar menú móvil y dropdowns si están abiertos
+    // Cerrar menú móvil y dropdowns
     cerrarMenuMovilYDropdowns();
 
-    // 6. Ocultar mensaje de acceso denegado si existe
+    // Ocultar mensaje de acceso denegado si existe
     const mensaje = document.getElementById('mensajeAccesoDenegado');
     if (mensaje) mensaje.style.display = 'none';
 
-    // 7. Reinicializar calendarios si se navega a páginas con calendario
+    // Reinicializar calendarios
     if (typeof CalendarManager !== 'undefined') {
         if (pageId === 'calendario') {
             CalendarManager.render('general');
@@ -80,19 +149,22 @@ function showPage(pageId) {
         }
     }
 
-    // 8. Renderizar cronograma público / actividades
+    // Renderizar cronograma público / actividades
     if (pageId === 'cronograma' && typeof window.renderizarCronogramaPublico === 'function') {
         window.renderizarCronogramaPublico();
     } else if (['culto', 'canto', 'escuela-sabatica', 'minuto-misionero', 'sociedad-jovenes', 'lunes-oracion', 'miercoles-testimonio'].includes(pageId) && typeof window.renderizarActividadPublica === 'function') {
         window.renderizarActividadPublica(pageId);
     }
 
-    // 9. Activar animaciones de uniformes al navegar a clubes
+    // Activar animaciones de uniformes al navegar a clubes
     if (['aventureros', 'conquistadores', 'guias'].includes(pageId) && typeof window.inicializarAnimacionesUniformes === 'function') {
         setTimeout(window.inicializarAnimacionesUniformes, 60);
     }
 
-    console.log(`📄 Página mostrada: ${pageId} - ${titulo}`);
+    // Disparar evento de cambio de página
+    window.dispatchEvent(new CustomEvent('pageChanged', { detail: { pageId } }));
+
+    console.log(`📄 Página mostrada: ${pageId} - ${PAGINAS[pageId]?.titulo || ''}`);
 }
 
 function cerrarMenuMovilYDropdowns() {

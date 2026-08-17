@@ -623,11 +623,8 @@ function initAllAnimations() {
     }, 200);
 }
 
-const originalShowPage = window.showPage;
-
-window.showPage = function (pageId) {
-    originalShowPage(pageId);
-
+// Integración de Scroll Reveal con cambios de página
+window.addEventListener('pageChanged', function () {
     setTimeout(() => {
         resetScrollReveal();
         setTimeout(() => {
@@ -637,9 +634,9 @@ window.showPage = function (pageId) {
                     el.classList.add('visible');
                 }
             });
-        }, 300);
-    }, 200);
-};
+        }, 200);
+    }, 100);
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     setTimeout(initAllAnimations, 500);

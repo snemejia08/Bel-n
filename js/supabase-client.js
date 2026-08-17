@@ -49,6 +49,19 @@ if (typeof supabase !== 'undefined' && supabase.createClient) {
   supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   console.log('✅ Cliente Supabase inicializado correctamente.');
   
+  // Probar conexión en vivo
+  supabaseClient.from('anuncios').select('id').limit(1)
+    .then(({ data, error }) => {
+      if (error) {
+        console.warn('⚠️ Supabase respondió con error:', error.message, error);
+      } else {
+        console.log('🌐 Conexión activa y verificada con la base de datos Supabase.');
+      }
+    })
+    .catch(err => {
+      console.warn('⚠️ No se pudo conectar con el servidor de Supabase:', err);
+    });
+
   // Refrescar caché de esquema para las tablas principales
   try {
     const tablas = [
@@ -70,6 +83,21 @@ if (typeof supabase !== 'undefined' && supabase.createClient) {
 window.supabaseClient = supabaseClient;
 window.SUPABASE_URL = SUPABASE_URL;
 window.SUPABASE_ANON_KEY = SUPABASE_ANON_KEY;
+
+window.testSupabaseConnection = async function() {
+  if (!window.supabaseClient) {
+    return { ok: false, message: 'La librería Supabase SDK no está disponible en la página.' };
+  }
+  try {
+    const { data, error } = await window.supabaseClient.from('anuncios').select('*').limit(3);
+    if (error) {
+      return { ok: false, message: `Error en consulta: ${error.message} (${error.code})`, error };
+    }
+    return { ok: true, message: 'Conexión exitosa a Supabase.', data };
+  } catch (e) {
+    return { ok: false, message: `Error de red: ${e.message}`, error: e };
+  }
+};
 
 /**
  * Mapeo de claves primarias compuestas o específicas por tabla

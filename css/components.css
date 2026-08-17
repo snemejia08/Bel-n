@@ -4868,6 +4868,7 @@
   }
 }
 
+
 .btn-catalogo-pulse {
   animation: btnPulse 3.5s infinite ease-in-out;
 }
@@ -4881,4 +4882,201 @@
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* ========================================
+   REDISEÑO PROFESIONAL IASD BELÉN v2
+   Estilo: interamerica.org inspirado
+   ======================================== */
+
+/* --- ESPACIO EN BORDES DE TARJETAS (FIX #1) --- */
+/* Todos los grids de tarjetas tienen padding para no pegarse al borde */
+[style*="grid-template-columns"],
+.grid-creencias,
+.grid-doctrinas,
+.grid-anuncios {
+    padding: 0.25rem;
+}
+
+/* Secciones de visitantes con buen respiro lateral */
+#visitantes > div[style*="margin-bottom"],
+#historia > div[style*="margin-bottom"],
+#estructura > div[style*="margin-bottom"] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+}
+
+/* Wrapper para grids con espacio del contenedor */
+.visitantes-grid-wrapper {
+    padding: 0.25rem 0;
+}
+
+/* --- ESTILOS PREMIUM DE PÁGINAS INTERIORES --- */
+/* Mejorar el back-link */
+.back-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    margin: 1.5rem 0 2rem !important;
+    font-weight: 600 !important;
+    color: var(--deep-blue) !important;
+    cursor: pointer !important;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 2rem !important;
+    border: 2px solid rgba(11, 43, 79, 0.15) !important;
+    background: white !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+    transition: all 0.25s ease !important;
+    font-size: 0.92rem !important;
+}
+
+.back-link:hover {
+    color: var(--golden) !important;
+    border-color: var(--golden) !important;
+    background: rgba(201, 157, 59, 0.06) !important;
+    transform: translateX(-3px) !important;
+    box-shadow: 0 4px 16px rgba(201,157,59,0.2) !important;
+}
+
+/* --- TARJETAS CON SOMBRA PREMIUM --- */
+.service-box {
+    background: #ffffff !important;
+    border-radius: 1.4rem !important;
+    padding: 2rem 2.2rem !important;
+    margin: 1.8rem 0 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(201, 157, 59, 0.15) !important;
+    border-left: 6px solid var(--golden) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    box-sizing: border-box !important;
+}
+
+.service-box:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.09) !important;
+}
+
+.service-box h3 {
+    color: var(--deep-blue) !important;
+    font-size: 1.35rem !important;
+    margin-bottom: 0.8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+
+.service-box p {
+    color: var(--dark-text) !important;
+    line-height: 1.75 !important;
+    font-size: 1rem !important;
+    margin-bottom: 0.8rem !important;
+}
+
+.service-box ul {
+    background: var(--cream, #fdfaf3) !important;
+    padding: 1.2rem 1.6rem 1.2rem 2.2rem !important;
+    border-radius: 1rem !important;
+    margin-top: 1rem !important;
+    border-left: 4px solid var(--golden) !important;
+    border: 1px solid rgba(201, 157, 59, 0.15) !important;
+    border-left: 4px solid var(--golden) !important;
+}
+
+.service-box ul li {
+    margin-bottom: 0.5rem !important;
+    color: var(--dark-text) !important;
+    line-height: 1.6 !important;
+    font-size: 0.92rem !important;
+}
+
+.card,
+.creencia-card,
+.creencia-card-hover,
+.mv-card-hover,
+.versiculo-card-hover,
+.faq-card-hover {
+    border-radius: 1.4rem !important;
+}
+
+/* Mejorar visitor-box */
+.visitor-box {
+    border-radius: 1.6rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+/* --- HERO MEJORADO --- */
+.hero {
+    border-radius: 2.4rem !important;
+}
+
+/* --- ESTILOS PARA SECCIÓN DE DIEZMO --- */
+#diezmo {
+    padding-bottom: 2rem;
+}
+
+/* --- SCROLL SUAVE Y BUEN ESPACIADO EN PÁGINAS --- */
+.page.active {
+    padding-bottom: 2rem;
+}
+
+/* Padding consistente para todas las páginas */
+#creencias,
+#doctrinas,
+#visitantes,
+#historia,
+#estructura,
+#aventureros,
+#conquistadores,
+#guias,
+#calendario,
+#anuncios,
+#diezmo {
+    padding-top: 0.5rem;
+}
+
+/* --- SEPARADOR INSTITUCIONAL DORADO --- */
+.section-separator {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--golden), var(--golden-light), transparent);
+    border-radius: 3px;
+    margin: 1rem 0 2rem;
+}
+
+/* --- MEJORAS VISUALES GENERALES (interamerica.org style) --- */
+/* Secciones internas más limpias */
+#visitantes .visitor-box,
+#historia .visitor-box {
+    padding: 2rem 2.2rem !important;
+}
+
+/* Cards de creencias con buen espaciado interior */
+.creencia-card-hover {
+    padding: 1.8rem !important;
+    border-radius: 1.4rem !important;
+}
+
+/* Grids con espacio adecuado */
+#visitantes div[style*="grid-template-columns: repeat"] {
+    gap: 1.5rem !important;
+}
+
+/* Versículos con fondo más rico */
+.versiculo-card-hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05) !important;
+    border-radius: 1.4rem !important;
+}
+
+/* Dropdown mejorado con fondo blanco limpio */
+.dropdown-menu li a,
+.dropdown-menu li .submenu-toggle {
+    border-radius: 0.6rem;
+    margin: 0 0.3rem;
+    color: var(--dark-text);
+    font-weight: 500;
+}
+
+.dropdown-menu li a:hover {
+    background: rgba(201, 157, 59, 0.08) !important;
+    color: var(--deep-blue) !important;
 }

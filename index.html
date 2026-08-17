@@ -24,129 +24,138 @@
     <link rel="stylesheet" href="css/animations.css" />
 </head>
 
+
 <body>
+    <!-- Barra de progreso de transición de páginas -->
+    <div id="pageProgressBar"></div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <div class="navbar-wrapper">
+          <div class="container">
+            <nav class="navbar">
+                <div class="logo" onclick="showPage('home')" role="button" tabindex="0">
+                    <img src="img/belen-logo-iasd.png" alt="Logo IASD Belén" class="logo-img" />
+                    <span>IASD Belén</span>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Abrir Menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="nav-links" id="navLinks">
+                    <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> Inicio</button>
+
+                    <div class="dropdown">
+                        <button class="nav-btn"><i class="fas fa-cross"></i> Creencias <i class="fas fa-chevron-down"
+                                style="font-size:0.6rem;"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="showPage('creencias')"><i class="fas fa-cross"></i> 28 Creencias</a></li>
+                            <li><a onclick="showPage('doctrinas')"><i class="fas fa-scroll"></i> Doctrinas</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- NUEVO DROPDOWN: ¿QUIÉNES SOMOS? -->
+                    <div class="dropdown">
+                        <button class="nav-btn"><i class="fas fa-users"></i> ¿Quiénes somos? <i class="fas fa-chevron-down"
+                                style="font-size:0.6rem;"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="showPage('visitantes')"><i class="fas fa-church"></i> ¿Quiénes son los
+                                    adventistas del 7° día?</a></li>
+                            <li><a onclick="showPage('historia')"><i class="fas fa-history"></i> Historia</a></li>
+                            <li><a onclick="showPage('estructura')"><i class="fas fa-sitemap"></i> Estructura
+                                    organizacional</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="nav-btn"><i class="fas fa-users"></i> Clubes <i class="fas fa-chevron-down"
+                                style="font-size:0.6rem;"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="showPage('aventureros')"><i class="fas fa-seedling"></i> Aventureros</a></li>
+                            <li><a onclick="showPage('conquistadores')"><i class="fas fa-hiking"></i> Conquistadores</a>
+                            </li>
+                            <li><a onclick="showPage('guias')"><i class="fas fa-compass"></i> Guías Mayores</a></li>
+                        </ul>
+                    </div>
+
+                    <button class="nav-btn" onclick="window.open('https://alfoliadventista.org/', '_blank')"><i
+                            class="fas fa-hand-holding-heart"></i>
+                        Diezmo</button>
+
+                    <!-- ========== CRONOGRAMA CON GRUPOS PEQUEÑOS ========== -->
+                    <div class="dropdown">
+                        <button class="nav-btn"><i class="fas fa-clock"></i> Cronograma <i
+                                class="fas fa-chevron-down nav-chevron"></i></button>
+                        <ul class="dropdown-menu">
+                            <!-- Submenú Culto -->
+                            <li class="has-submenu">
+                                <a class="submenu-toggle">
+                                    <span><i class="fas fa-pray"></i> Culto</span>
+                                    <i class="fas fa-chevron-right sub-chevron"></i>
+                                </a>
+                                <ul class="submenu-list">
+                                    <li><a onclick="showPage('culto')"><i class="fas fa-bible"></i> Culto Divino /
+                                            Predica</a></li>
+                                    <li><a onclick="showPage('canto')"><i class="fas fa-music"></i> Canto</a></li>
+                                    <li><a onclick="showPage('escuela-sabatica')"><i class="fas fa-book-open"></i> Escuela
+                                            Sabática</a></li>
+                                    <li><a onclick="showPage('minuto-misionero')"><i class="fas fa-globe-americas"></i>
+                                            Minuto Misionero</a></li>
+                                </ul>
+                            </li>
+                            <li><a onclick="showPage('sociedad-jovenes')"><i class="fas fa-users"></i> Sociedad de
+                                    Jóvenes</a></li>
+                            <li><a onclick="showPage('lunes-oracion')"><i class="fas fa-hands-praying"></i> Lunes de
+                                    Oración</a></li>
+                            <li><a onclick="showPage('miercoles-testimonio')"><i class="fas fa-comment-dots"></i> Miér. de
+                                    Testimonio</a></li>
+
+                            <!-- Submenú Grupos Pequeños -->
+                            <li class="has-submenu grupos-pequenos-item">
+                                <a class="submenu-toggle">
+                                    <span><i class="fas fa-users"></i> Grupos pequeños</span>
+                                    <i class="fas fa-chevron-right sub-chevron"></i>
+                                </a>
+                                <ul class="submenu-list submenu-grupos">
+                                    <li><a onclick="mostrarGrupo('unidos_en_verdad')"><i class="fas fa-home"></i> Unidos en
+                                            Verdad</a></li>
+                                    <li><a onclick="mostrarGrupo('mansion_gloriosa')"><i class="fas fa-home"></i> Mansión
+                                            Gloriosa</a></li>
+                                    <li><a onclick="mostrarGrupo('mansion_gloriosa_kid')"><i class="fas fa-child"></i>
+                                            Mansión Gloriosa Kid</a></li>
+                                    <li><a onclick="mostrarGrupo('aposento_alto')"><i class="fas fa-arrow-up"></i> Aposento
+                                            Alto</a></li>
+                                    <li><a onclick="mostrarGrupo('jehova_jireh')"><i class="fas fa-cross"></i> Jehová
+                                            Jireh</a></li>
+                                    <li><a onclick="mostrarGrupo('maranatha_1')"><i class="fas fa-star"></i> Maranatha 1</a>
+                                    </li>
+                                    <li><a onclick="mostrarGrupo('maranatha_2')"><i class="fas fa-star"></i> Maranatha 2</a>
+                                    </li>
+                                    <li><a onclick="mostrarGrupo('ah_de_venir')"><i class="fas fa-clock"></i> Ah de
+                                            Venir</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a onclick="showPage('conquistadores')"><i class="fas fa-hiking"></i> Conquistadores</a>
+                            </li>
+                            <li><a onclick="showPage('aventureros')"><i class="fas fa-seedling"></i> Aventureros</a></li>
+                            <li><a onclick="showPage('guias')"><i class="fas fa-compass"></i> Guías Mayores</a></li>
+                        </ul>
+                    </div>
+
+                    <button class="nav-btn primary" onclick="showPage('calendario')"><i class="fas fa-calendar-alt"></i>
+                        Calendario</button>
+                    <button class="nav-btn golden" onclick="showPage('anuncios')"><i class="fas fa-bullhorn"></i>
+                        Anuncios</button>
+
+                </div>
+            </nav>
+          </div>
+        </div>
+
     <div class="container">
-
-        <!-- ==================== NAVBAR ==================== -->
-        <nav class="navbar">
-            <div class="logo">
-                <img src="img/belen-logo-iasd.png" alt="Logo IASD Belén" class="logo-img" />
-            </div>
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Abrir Menú">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <div class="nav-links" id="navLinks">
-                <button class="nav-btn" onclick="showPage('home')"><i class="fas fa-home"></i> Inicio</button>
-
-                <div class="dropdown">
-                    <button class="nav-btn"><i class="fas fa-cross"></i> Creencias <i class="fas fa-chevron-down"
-                            style="font-size:0.6rem;"></i></button>
-                    <ul class="dropdown-menu">
-                        <li><a onclick="showPage('creencias')"><i class="fas fa-cross"></i> 28 Creencias</a></li>
-                        <li><a onclick="showPage('doctrinas')"><i class="fas fa-scroll"></i> Doctrinas</a></li>
-                    </ul>
-                </div>
-
-                <!-- NUEVO DROPDOWN: ¿QUIÉNES SOMOS? -->
-                <div class="dropdown">
-                    <button class="nav-btn"><i class="fas fa-users"></i> ¿Quiénes somos? <i class="fas fa-chevron-down"
-                            style="font-size:0.6rem;"></i></button>
-                    <ul class="dropdown-menu">
-                        <li><a onclick="showPage('visitantes')"><i class="fas fa-church"></i> ¿Quiénes son los
-                                adventistas del 7° día?</a></li>
-                        <li><a onclick="showPage('historia')"><i class="fas fa-history"></i> Historia</a></li>
-                        <li><a onclick="showPage('estructura')"><i class="fas fa-sitemap"></i> Estructura
-                                organizacional</a></li>
-                    </ul>
-                </div>
-
-                <div class="dropdown">
-                    <button class="nav-btn"><i class="fas fa-users"></i> Clubes <i class="fas fa-chevron-down"
-                            style="font-size:0.6rem;"></i></button>
-                    <ul class="dropdown-menu">
-                        <li><a onclick="showPage('aventureros')"><i class="fas fa-seedling"></i> Aventureros</a></li>
-                        <li><a onclick="showPage('conquistadores')"><i class="fas fa-hiking"></i> Conquistadores</a>
-                        </li>
-                        <li><a onclick="showPage('guias')"><i class="fas fa-compass"></i> Guías Mayores</a></li>
-                    </ul>
-                </div>
-
-                <button class="nav-btn" onclick="showPage('https://alfoliadventista.org/')"><i
-                        class="fas fa-hand-holding-heart"></i>
-                    Diezmo</button>
-
-                <!-- ========== CRONOGRAMA CON GRUPOS PEQUEÑOS ========== -->
-                <div class="dropdown">
-                    <button class="nav-btn"><i class="fas fa-clock"></i> Cronograma <i
-                            class="fas fa-chevron-down nav-chevron"></i></button>
-                    <ul class="dropdown-menu">
-                        <!-- Submenú Culto -->
-                        <li class="has-submenu">
-                            <a class="submenu-toggle">
-                                <span><i class="fas fa-pray"></i> Culto</span>
-                                <i class="fas fa-chevron-right sub-chevron"></i>
-                            </a>
-                            <ul class="submenu-list">
-                                <li><a onclick="showPage('culto')"><i class="fas fa-bible"></i> Culto Divino /
-                                        Predica</a></li>
-                                <li><a onclick="showPage('canto')"><i class="fas fa-music"></i> Canto</a></li>
-                                <li><a onclick="showPage('escuela-sabatica')"><i class="fas fa-book-open"></i> Escuela
-                                        Sabática</a></li>
-                                <li><a onclick="showPage('minuto-misionero')"><i class="fas fa-globe-americas"></i>
-                                        Minuto Misionero</a></li>
-                            </ul>
-                        </li>
-                        <li><a onclick="showPage('sociedad-jovenes')"><i class="fas fa-users"></i> Sociedad de
-                                Jóvenes</a></li>
-                        <li><a onclick="showPage('lunes-oracion')"><i class="fas fa-hands-praying"></i> Lunes de
-                                Oración</a></li>
-                        <li><a onclick="showPage('miercoles-testimonio')"><i class="fas fa-comment-dots"></i> Miér. de
-                                Testimonio</a></li>
-
-                        <!-- Submenú Grupos Pequeños -->
-                        <li class="has-submenu grupos-pequenos-item">
-                            <a class="submenu-toggle">
-                                <span><i class="fas fa-users"></i> Grupos pequeños</span>
-                                <i class="fas fa-chevron-right sub-chevron"></i>
-                            </a>
-                            <ul class="submenu-list submenu-grupos">
-                                <li><a onclick="mostrarGrupo('unidos_en_verdad')"><i class="fas fa-home"></i> Unidos en
-                                        Verdad</a></li>
-                                <li><a onclick="mostrarGrupo('mansion_gloriosa')"><i class="fas fa-home"></i> Mansión
-                                        Gloriosa</a></li>
-                                <li><a onclick="mostrarGrupo('mansion_gloriosa_kid')"><i class="fas fa-child"></i>
-                                        Mansión Gloriosa Kid</a></li>
-                                <li><a onclick="mostrarGrupo('aposento_alto')"><i class="fas fa-arrow-up"></i> Aposento
-                                        Alto</a></li>
-                                <li><a onclick="mostrarGrupo('jehova_jireh')"><i class="fas fa-cross"></i> Jehová
-                                        Jireh</a></li>
-                                <li><a onclick="mostrarGrupo('maranatha_1')"><i class="fas fa-star"></i> Maranatha 1</a>
-                                </li>
-                                <li><a onclick="mostrarGrupo('maranatha_2')"><i class="fas fa-star"></i> Maranatha 2</a>
-                                </li>
-                                <li><a onclick="mostrarGrupo('ah_de_venir')"><i class="fas fa-clock"></i> Ah de
-                                        Venir</a></li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a onclick="showPage('conquistadores')"><i class="fas fa-hiking"></i> Conquistadores</a>
-                        </li>
-                        <li><a onclick="showPage('aventureros')"><i class="fas fa-seedling"></i> Aventureros</a></li>
-                        <li><a onclick="showPage('guias')"><i class="fas fa-compass"></i> Guías Mayores</a></li>
-                    </ul>
-                </div>
-
-                <button class="nav-btn primary" onclick="showPage('calendario')"><i class="fas fa-calendar-alt"></i>
-                    Calendario</button>
-                <button class="nav-btn golden" onclick="showPage('anuncios')"><i class="fas fa-bullhorn"></i>
-                    Anuncios</button>
-
-            </div>
-        </nav>
 
         <!--====================HOME====================-->
         <div id="home" class="page active">
@@ -617,10 +626,6 @@
             </div>
 
             <div style="margin-bottom: 1.5rem; font-size: 0.85rem; font-weight: 600; color: var(--deep-blue, #1a3a4a);">
-                <i class="fas fa-church" style="color: var(--golden, #c9a53b); margin-right: 0.4rem;"></i>
-                Iglesia Adventista del Séptimo Día · Belén
-            </div>
-
             <button type="button" onclick="cerrarModalConfirmacionContacto()"
                 style="background: linear-gradient(135deg, #d4a038 0%, #c9a53b 100%); color: var(--deep-blue, #1a3a4a); border: none; padding: 0.8rem 2.5rem; border-radius: 2rem; font-weight: 700; font-size: 1rem; cursor: pointer; font-family: 'Inter', sans-serif; box-shadow: 0 4px 15px rgba(201,157,59,0.3); transition: all 0.3s ease;">
                 Entendido
@@ -631,570 +636,6 @@
     <!-- ==================== CREENCIAS ==================== -->
     <div id="creencias" class="page">
         <button class="back-link" onclick="showPage('home')"><i class="fas fa-arrow-left"></i> Volver</button>
-        <h2 class="page-title"><i class="fas fa-cross"></i> Las 28 Creencias Fundamentales de la Iglesia
-            Adventista
-            del Séptimo Día</h2>
-        <p
-            style="color:var(--muted-text); margin-bottom:1.5rem; text-align:center; max-width:700px; margin-left:auto; margin-right:auto;">
-            Las siguientes son las 28 creencias fundamentales de la Iglesia Adventista del Séptimo Día, basadas
-            en
-            la Palabra de Dios.
-        </p>
-
-        <!-- BUSCADOR EN TIEMPO REAL -->
-        <div class="search-creencias-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchCreenciasInput"
-                placeholder="Buscar creencia o palabra clave (ej: Sábado, Bautismo, Salud, Trinidad)..." />
-        </div>
-
-        <!-- TARJETAS DE CREENCIAS (1 A 28) -->
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 1: Las Sagradas Escrituras</h3>
-            <p style="margin-top:0.8rem;">La Biblia es la Palabra inspirada de Dios, la autoridad final en toda
-                materia de fe y práctica. Fue escrita por hombres santos guiados por el Espíritu Santo y es el
-                testimonio completo de la voluntad de Dios para la salvación de la humanidad. En ella
-                encontramos a
-                Cristo como el centro de toda la revelación divina.</p>
-            <p style="margin-top:0.6rem;">La Escritura es nuestra única regla de fe. Se interpreta a sí misma y
-                el
-                Espíritu Santo ilumina al creyente para comprenderla. No es un libro de mitos, sino el relato
-                histórico y profético de la relación de Dios con la humanidad, culminando en la vida, muerte y
-                resurrección de Jesús.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>2 Timoteo 3:16</strong> — "Toda la Escritura es inspirada por Dios, y útil para
-                        enseñar, para redargüir, para corregir, para instruir en justicia."</li>
-                    <li><strong>2 Pedro 1:20-21</strong> — "Ninguna profecía de la Escritura es de
-                        interpretación
-                        privada, porque nunca la profecía fue traída por voluntad humana, sino que los santos
-                        hombres de Dios hablaron siendo inspirados por el Espíritu Santo."</li>
-                    <li><strong>Juan 5:39</strong> — "Escudriñad las Escrituras; porque a vosotros os parece que
-                        en
-                        ellas tenéis la vida eterna; y ellas son las que dan testimonio de mí."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 2: La Trinidad</h3>
-            <p style="margin-top:0.8rem;">Hay un solo Dios: Padre, Hijo y Espíritu Santo, tres personas
-                coeternas,
-                coiguales y consustanciales. Son uno en propósito, poder y amor. El Padre es la fuente de toda
-                deidad, el Hijo es el Verbo encarnado, y el Espíritu Santo es el agente activo en la redención y
-                santificación.</p>
-            <p style="margin-top:0.6rem;">La Trinidad es el misterio sublime que revela la naturaleza relacional
-                de
-                Dios. No es una contradicción, sino una verdad que nos muestra que el amor es la esencia del
-                carácter divino. Desde la eternidad, existe comunión perfecta entre las tres personas.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Mateo 28:19</strong> — "Por tanto, id, y haced discípulos a todas las naciones,
-                        bautizándolos en el nombre del Padre, y del Hijo, y del Espíritu Santo."</li>
-                    <li><strong>2 Corintios 13:14</strong> — "La gracia del Señor Jesucristo, el amor de Dios, y
-                        la
-                        comunión del Espíritu Santo sean con todos vosotros."</li>
-                    <li><strong>Juan 10:30</strong> — "Yo y el Padre uno somos."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 3: Dios Padre</h3>
-            <p style="margin-top:0.8rem;">Dios el Padre es la primera persona de la Trinidad. Es el Creador, el
-                Sustentador de todas las cosas, y el Padre de todos los que creen en Jesucristo. Es un ser
-                personal,
-                espiritual, eterno, infinito en poder, sabiduría, santidad, justicia, misericordia y amor.</p>
-            <p style="margin-top:0.6rem;">El Padre no es un dios distante. Nos ama con un amor eterno y se
-                preocupa
-                por cada uno de nosotros. Su paternidad es real: somos creados por Él, sustentados por Él y
-                adoptados como hijos por medio de Jesucristo.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>1 Juan 4:8</strong> — "El que no ama, no ha conocido a Dios; porque Dios es
-                        amor."
-                    </li>
-                    <li><strong>Mateo 6:9</strong> — "Vosotros, pues, oraréis así: Padre nuestro que estás en
-                        los
-                        cielos, santificado sea tu nombre."</li>
-                    <li><strong>Salmo 103:13</strong> — "Como el padre se compadece de los hijos, se compadece
-                        Jehová de los que le temen."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 4: Jesucristo</h3>
-            <p style="margin-top:0.8rem;">Jesucristo es el Hijo eterno de Dios, la segunda persona de la
-                Trinidad.
-                Es plenamente divino y plenamente humano. Nació de la virgen María, vivió sin pecado, murió en
-                la
-                cruz como sacrificio sustitutivo, resucitó al tercer día, ascendió al cielo y ejerce como Sumo
-                Sacerdote. Volverá visiblemente por su pueblo.</p>
-            <p style="margin-top:0.6rem;">Cristo es el centro de toda la Escritura. En Él se resuelven todos los
-                misterios: la justicia y la misericordia, la ley y el evangelio, la creación y la redención. Su
-                muerte es nuestra justificación; su resurrección, nuestra garantía; su venida, nuestra
-                esperanza.
-            </p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Juan 1:1,14</strong> — "En el principio era el Verbo... Y aquel Verbo fue hecho
-                        carne, y habitó entre nosotros."</li>
-                    <li><strong>Filipenses 2:6-8</strong> — "Se despojó a sí mismo... se humilló a sí mismo,
-                        haciéndose obediente hasta la muerte, y muerte de cruz."</li>
-                    <li><strong>Romanos 5:8</strong> — "Mas Dios muestra su amor para con nosotros, en que
-                        siendo
-                        aún pecadores, Cristo murió por nosotros."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 5: El Espíritu Santo</h3>
-            <p style="margin-top:0.8rem;">El Espíritu Santo es la tercera persona de la Trinidad, plenamente
-                divino.
-                Convence al mundo de pecado, regenera, santifica, guía y capacita al creyente. Derrama los dones
-                espirituales sobre la iglesia y la unifica en el amor. Es la presencia real de Cristo en el
-                corazón
-                del creyente.</p>
-            <p style="margin-top:0.6rem;">El Espíritu Santo no es una fuerza impersonal, sino una persona divina
-                con
-                voluntad y emociones. Nos atrae a Cristo, nos da nuevo nacimiento y nos capacita para vivir una
-                vida
-                que glorifique a Dios.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Juan 16:7-8</strong> — "Os conviene que yo me vaya; porque si no me voy, el
-                        Consolador no vendrá a vosotros... Y cuando él venga, redargüirá al mundo de pecado, de
-                        justicia y de juicio."</li>
-                    <li><strong>Romanos 8:26</strong> — "El Espíritu nos ayuda en nuestra debilidad... el
-                        Espíritu
-                        mismo intercede por nosotros con gemidos indecibles."</li>
-                    <li><strong>Hechos 1:8</strong> — "Recibiréis poder, cuando haya venido sobre vosotros el
-                        Espíritu Santo, y me seréis testigos."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 6: La Creación</h3>
-            <p style="margin-top:0.8rem;">Dios creó los cielos y la tierra en seis días literales y reposó el
-                séptimo día, instituyendo el sábado como memorial eterno de su poder creador. La creación fue un
-                acto especial y directo de Dios. Todos los seres humanos han sido creados a imagen de Dios, con
-                dignidad y valor inherentes.</p>
-            <p style="margin-top:0.6rem;">La creación es el fundamento de la adoración. No somos producto del
-                azar,
-                sino diseñados por un Dios amoroso con un propósito eterno. La evolución es incompatible con la
-                fe
-                bíblica porque niega el origen sobrenatural de la vida.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Génesis 1:1</strong> — "En el principio creó Dios los cielos y la tierra."</li>
-                    <li><strong>Éxodo 20:11</strong> — "Porque en seis días hizo Jehová los cielos y la tierra,
-                        el
-                        mar, y todas las cosas que en ellos hay, y reposó en el séptimo día."</li>
-                    <li><strong>Apocalipsis 14:7</strong> — "Adorad a aquel que hizo el cielo y la tierra, el
-                        mar y
-                        las fuentes de las aguas."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 7: La Naturaleza del Hombre</h3>
-            <p style="margin-top:0.8rem;">El hombre y la mujer fueron creados a imagen de Dios, pero al pecar,
-                cayeron y heredaron una naturaleza pecaminosa. El ser humano es una unidad indivisible: cuerpo,
-                alma
-                y espíritu. La muerte es un sueño inconsciente, y la esperanza de vida eterna solo está en la
-                resurrección que Cristo otorgará.</p>
-            <p style="margin-top:0.6rem;">No tenemos un alma inmortal que sigue viva después de la muerte; somos
-                un
-                alma. Esta verdad nos libera del miedo a la muerte y de falsas doctrinas como el purgatorio.
-                Nuestra
-                vida eterna no está en nosotros, sino en Cristo.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Génesis 2:7</strong> — "Fue el hombre un ser viviente."</li>
-                    <li><strong>Romanos 3:23</strong> — "Por cuanto todos pecaron, y están destituidos de la
-                        gloria
-                        de Dios."</li>
-                    <li><strong>Eclesiastés 12:7</strong> — "El polvo vuelva a la tierra, como era, y el
-                        espíritu
-                        vuelva a Dios que lo dio."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 8: El Gran Conflicto</h3>
-            <p style="margin-top:0.8rem;">Toda la humanidad está involucrada en un conflicto cósmico entre
-                Cristo y
-                Satanás, que comenzó en el cielo cuando Lucifer se rebeló contra el gobierno de Dios. Este
-                conflicto
-                es una controversia sobre el carácter de Dios. Cristo vino a revelar el verdadero carácter del
-                Padre
-                y a vencer a Satanás en la cruz.</p>
-            <p style="margin-top:0.6rem;">Esta doctrina da sentido al sufrimiento y al mal. Somos actores en
-                este
-                drama cósmico, y cada decisión tiene implicaciones eternas. La victoria ya está ganada en
-                Cristo, y
-                nosotros podemos ser más que vencedores por medio de Él.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Apocalipsis 12:7-9</strong> — "Hubo una gran batalla en el cielo: Miguel y sus
-                        ángeles luchaban contra el dragón... y fue lanzado fuera el gran dragón, la serpiente
-                        antigua, que se llama diablo y Satanás."</li>
-                    <li><strong>Job 1:6-12</strong> — El desafío de Satanás al carácter de Dios.</li>
-                    <li><strong>Romanos 8:37</strong> — "En todas estas cosas somos más que vencedores por medio
-                        de
-                        aquel que nos amó."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 9: La Vida, Muerte y Resurrección de Cristo</h3>
-            <p style="margin-top:0.8rem;">La vida de Cristo fue el perfecto ejemplo de obediencia. Su muerte fue
-                un
-                sacrificio sustitutivo: el Justo murió por los injustos para llevarnos a Dios. Su resurrección
-                es la
-                garantía de nuestra justificación y la victoria sobre la muerte. Por su vida, muerte y
-                resurrección,
-                Cristo nos ofrece salvación a todos los que creen.</p>
-            <p style="margin-top:0.6rem;">La cruz es el centro de la historia. Allí, el amor y la justicia de
-                Dios
-                se encontraron. Cristo no murió solo como mártir, sino como nuestro Sustituto. Su resurrección
-                es la
-                prueba de que el Padre aceptó su sacrificio.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Isaías 53:5</strong> — "Mas él herido fue por nuestras rebeliones, molido por
-                        nuestros pecados; el castigo de nuestra paz fue sobre él, y por su llaga fuimos nosotros
-                        curados."</li>
-                    <li><strong>1 Corintios 15:3-4</strong> — "Cristo murió por nuestros pecados... y que
-                        resucitó
-                        al tercer día."</li>
-                    <li><strong>Romanos 4:25</strong> — "El cual fue entregado por nuestras transgresiones, y
-                        resucitado para nuestra justificación."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 10: La Experiencia de la Salvación</h3>
-            <p style="margin-top:0.8rem;">La salvación es un don gratuito de Dios, recibido por fe, no por
-                obras.
-                Cuando el pecador se arrepiente y cree en Jesús, es justificado por gracia. La santificación es
-                el
-                proceso continuo por el cual el Espíritu Santo transforma el carácter del creyente a la imagen
-                de
-                Cristo. La salvación incluye la justificación, la santificación y la glorificación final.</p>
-            <p style="margin-top:0.6rem;">No somos salvos por nuestras obras, sino para hacer buenas obras. La
-                seguridad de la salvación no está en nuestras emociones, sino en la fidelidad de Dios y en su
-                promesa de completar la obra que comenzó en nosotros.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Efesios 2:8-10</strong> — "Porque por gracia sois salvos por medio de la fe...
-                        no
-                        por obras, para que nadie se gloríe. Porque somos hechura suya, creados en Cristo Jesús
-                        para
-                        buenas obras."</li>
-                    <li><strong>Romanos 5:1</strong> — "Justificados, pues, por la fe, tenemos paz para con Dios
-                        por
-                        medio de nuestro Señor Jesucristo."</li>
-                    <li><strong>Filipenses 2:12-13</strong> — "Dios es el que en vosotros produce así el querer
-                        como
-                        el hacer, por su buena voluntad."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 11: Crecimiento en Cristo</h3>
-            <p style="margin-top:0.8rem;">Por medio de la muerte de Cristo, obtenemos victoria sobre el mal. El
-                Espíritu Santo mora en el creyente, dándole poder para vencer el pecado. El crecimiento
-                espiritual
-                implica entrega diaria a Cristo, estudio de la Palabra, oración y servicio. El fruto del
-                Espíritu es
-                la evidencia de la obra de Cristo en nosotros.</p>
-            <p style="margin-top:0.6rem;">La vida cristiana es una carrera de resistencia, no un sprint. Implica
-                disciplina y dependencia del Espíritu Santo. La meta es llegar a la estatura de la plenitud de
-                Cristo.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>2 Pedro 3:18</strong> — "Creced en la gracia y el conocimiento de nuestro Señor
-                        y
-                        Salvador Jesucristo."</li>
-                    <li><strong>Gálatas 5:22-23</strong> — "El fruto del Espíritu es amor, gozo, paz, paciencia,
-                        benignidad, bondad, fe, mansedumbre, templanza."</li>
-                    <li><strong>Efesios 4:13</strong> — "Hasta que todos lleguemos... a un varón perfecto, a la
-                        medida de la estatura de la plenitud de Cristo."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 12: La Iglesia</h3>
-            <p style="margin-top:0.8rem;">La iglesia es la comunidad de creyentes que confiesan a Jesucristo
-                como
-                Señor y Salvador. Es el cuerpo de Cristo en la tierra, un organismo espiritual llamado a adorar
-                a
-                Dios, proclamar el evangelio, nutrir a los creyentes y preparar a su pueblo para la segunda
-                venida
-                de Jesús.</p>
-            <p style="margin-top:0.6rem;">La iglesia no es un edificio, sino el cuerpo vivo de Cristo. Ser
-                miembro
-                de la iglesia no es una opción; es parte integral de la experiencia de salvación. Cristo ama a
-                la
-                iglesia y se entregó por ella.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Mateo 16:18</strong> — "Sobre esta roca edificaré mi iglesia; y las puertas del
-                        Hades no prevalecerán contra ella."</li>
-                    <li><strong>Efesios 1:22-23</strong> — "Dio por cabeza sobre todas las cosas a la iglesia,
-                        la
-                        cual es su cuerpo."</li>
-                    <li><strong>1 Pedro 2:9</strong> — "Vosotros sois linaje escogido, real sacerdocio, nación
-                        santa, pueblo adquirido por Dios."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 13: El Remanente y su Misión</h3>
-            <p style="margin-top:0.8rem;">En los últimos días, Dios levanta un remanente (los adventistas del
-                séptimo día) para proclamar el mensaje de los tres ángeles de Apocalipsis 14. Este remanente
-                llama a
-                la humanidad a adorar al Creador, a salir de la confusión espiritual y a prepararse para el
-                juicio
-                final. Se caracteriza por guardar los mandamientos de Dios y tener la fe de Jesús.</p>
-            <p style="margin-top:0.6rem;">Este no es un mensaje de superioridad, sino de responsabilidad
-                profética.
-                Dios siempre ha tenido un remanente, y en el tiempo del fin, Él nos confía un mensaje especial
-                para
-                preparar a un pueblo para la venida de Cristo.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Apocalipsis 12:17</strong> — "El dragón... se fue a hacer guerra contra el resto
-                        de
-                        la descendencia de ella, los que guardan los mandamientos de Dios y tienen el testimonio
-                        de
-                        Jesucristo."</li>
-                    <li><strong>Apocalipsis 14:6-7</strong> — "Vi a otro ángel... que tenía el evangelio
-                        eterno...
-                        diciendo: Temed a Dios, y dadle gloria, porque la hora de su juicio ha llegado."</li>
-                    <li><strong>Apocalipsis 14:12</strong> — "Aquí está la paciencia de los santos, los que
-                        guardan
-                        los mandamientos de Dios y la fe de Jesús."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 14: Unidad en el Cuerpo de Cristo</h3>
-            <p style="margin-top:0.8rem;">Todos los creyentes, sin importar su raza, género o condición social,
-                son
-                uno en Cristo Jesús. Esta unidad no es uniformidad, sino diversidad en armonía. Se basa en la
-                verdad
-                bíblica, no en el compromiso con el error. Debemos amarnos unos a otros y mantener la unidad del
-                Espíritu.</p>
-            <p style="margin-top:0.6rem;">La unidad es el testimonio más poderoso que podemos dar al mundo.
-                Jesús
-                oró por nuestra unidad. Cuando nos enfocamos en Cristo, nuestras diferencias se vuelven
-                secundarias
-                y nuestro amor se vuelve evidente.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Juan 17:21</strong> — "Para que todos sean uno... para que el mundo crea que tú
-                        me
-                        enviaste."</li>
-                    <li><strong>Efesios 4:3-6</strong> — "Guardar la unidad del Espíritu en el vínculo de la
-                        paz; un
-                        cuerpo, y un Espíritu, un Señor, una fe, un bautismo."</li>
-                    <li><strong>Romanos 12:4-5</strong> — "Nosotros, siendo muchos, somos un cuerpo en Cristo, y
-                        todos miembros los unos de los otros."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 15: El Bautismo</h3>
-            <p style="margin-top:0.8rem;">El bautismo es una ordenanza bíblica que simboliza la muerte al pecado
-                y
-                la resurrección a una nueva vida en Cristo. Se administra por inmersión y es una declaración
-                pública
-                de fe. Es el paso que sigue al arrepentimiento y la aceptación de Jesús como Salvador.</p>
-            <p style="margin-top:0.6rem;">El bautismo no es una ceremonia vacía; es un acto de obediencia que
-                marca
-                el inicio de la vida cristiana. La inmersión simboliza la muerte del "viejo hombre" y la
-                resurrección del "nuevo hombre" en Cristo.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Romanos 6:3-5</strong> — "Somos sepultados juntamente con él para muerte por el
-                        bautismo, a fin de que como Cristo resucitó... así también nosotros andemos en vida
-                        nueva."
-                    </li>
-                    <li><strong>Mateo 28:19</strong> — "Id, y haced discípulos a todas las naciones,
-                        bautizándolos."
-                    </li>
-                    <li><strong>Hechos 2:38</strong> — "Arrepentíos, y bautícese cada uno de vosotros... para
-                        perdón
-                        de los pecados."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 16: La Cena del Señor</h3>
-            <p style="margin-top:0.8rem;">La Cena del Señor conmemora la muerte sacrificial de Cristo. Se
-                celebra
-                con pan sin levadura (símbolo del cuerpo de Cristo) y vino sin fermentar (símbolo de su sangre).
-                Incluye el lavamiento de los pies, que simboliza humildad y servicio. Debe ir precedida por
-                examen
-                personal y arrepentimiento.</p>
-            <p style="margin-top:0.6rem;">La Cena del Señor es el momento más íntimo de comunión con Jesús.
-                Proclamamos su muerte hasta que él venga. El lavamiento de los pies nos recuerda que debemos
-                servirnos unos a otros.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>1 Corintios 11:23-26</strong> — "El Señor Jesús, la noche que fue entregado,
-                        tomó
-                        pan... haced esto en memoria de mí... la muerte del Señor anunciáis hasta que él venga."
-                    </li>
-                    <li><strong>Juan 13:14-15</strong> — "Si yo, el Señor y el Maestro, he lavado vuestros pies,
-                        vosotros también debéis lavaros los pies los unos a los otros."</li>
-                    <li><strong>1 Corintios 11:28</strong> — "Pruébese cada uno a sí mismo, y así coma de aquel
-                        pan."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 17: Dones Espirituales</h3>
-            <p style="margin-top:0.8rem;">El Espíritu Santo da dones espirituales a todos los creyentes para
-                edificar la iglesia y cumplir su misión. Estos dones incluyen profecía, enseñanza, sanidad,
-                servicio
-                y administración. La iglesia debe reconocer y cultivar estos dones para el bien común y la
-                gloria de
-                Dios.</p>
-            <p style="margin-top:0.6rem;">Cada creyente ha recibido al menos un don. Los dones no son para
-                lucirse,
-                sino para servir. Cuando usamos nuestros dones en amor, la iglesia crece en madurez y unidad.
-            </p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>1 Corintios 12:4-7</strong> — "Hay diversidad de dones, pero el Espíritu es el
-                        mismo... a cada uno le es dada la manifestación del Espíritu para provecho."</li>
-                    <li><strong>Efesios 4:11-13</strong> — "Él mismo constituyó a unos, apóstoles; a otros,
-                        profetas; a otros, evangelistas; a otros, pastores y maestros."</li>
-                    <li><strong>Romanos 12:6-8</strong> — "Tenemos diferentes dones, según la gracia que nos es
-                        dada."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 18: El Don de Profecía</h3>
-            <p style="margin-top:0.8rem;">Uno de los dones del Espíritu Santo es el don de profecía, que se
-                manifestó en la iglesia primitiva y en el tiempo del fin. Este don se ha manifestado en el
-                ministerio de Elena G. de White, considerada como una mensajera del Señor. Sus escritos son una
-                guía
-                inspirada, pero siempre sujetos a la Biblia como autoridad final.</p>
-            <p style="margin-top:0.6rem;">La profecía no inventa nuevas doctrinas, sino que aplica las verdades
-                bíblicas. Elena G. de White no reemplaza a la Biblia, sino que la exalta y la dirige a Cristo.
-            </p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Joel 2:28</strong> — "Derramaré mi Espíritu sobre toda carne, y profetizarán
-                        vuestros hijos."</li>
-                    <li><strong>Apocalipsis 12:17</strong> — "Los que guardan los mandamientos de Dios y tienen
-                        el
-                        testimonio de Jesucristo."</li>
-                    <li><strong>Apocalipsis 19:10</strong> — "El testimonio de Jesús es el espíritu de la
-                        profecía."
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 19: La Ley de Dios</h3>
-            <p style="margin-top:0.8rem;">La ley de Dios, resumida en los Diez Mandamientos, es la expresión del
-                carácter de Dios. Es santa, justa y buena, y revela el pecado y la necesidad de un Salvador. La
-                gracia no anula la ley, sino que la confirma. Guardar la ley es la respuesta del creyente al
-                amor de
-                Dios.</p>
-            <p style="margin-top:0.6rem;">No guardamos la ley para ser salvos (eso es legalismo), sino porque ya
-                somos salvos y queremos vivir en armonía con el carácter de Dios. La ley es el espejo que nos
-                muestra nuestro pecado y nos lleva a Cristo.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Éxodo 20:1-17</strong> — Los Diez Mandamientos.</li>
-                    <li><strong>Romanos 3:31</strong> — "¿Luego por la fe invalidamos la ley? En ninguna manera,
-                        sino que confirmamos la ley."</li>
-                    <li><strong>Santiago 2:10-12</strong> — "Cualquiera que guardare toda la ley, pero ofendiere
-                        en
-                        un punto, se hace culpable de todos."</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="service-box" style="margin-bottom:1.5rem;">
-            <h3 style="color:var(--deep-blue);">Creencia 20: El Sábado</h3>
-            <p style="margin-top:0.8rem;">El sábado (séptimo día) fue instituido por Dios en la creación como
-                día de
-                reposo y adoración. Es un memorial de la creación y un signo de redención. Se guarda desde el
-                viernes al atardecer hasta el sábado al atardecer. Es un día de descanso físico, adoración en
-                comunidad y servicio a los demás.</p>
-            <p style="margin-top:0.6rem;">El sábado no es un día de restricciones pesadas, sino de descanso y
-                alegría. En un mundo acelerado, es un remanso de paz que nos recuerda que pertenecemos a Dios.
-                Jesús
-                es el Señor del sábado.</p>
-            <div
-                style="background:var(--cream); padding:1rem; border-radius:1rem; margin-top:1rem; border-left:4px solid var(--golden);">
-                <p style="font-weight:600; color:var(--deep-blue);">📖 Textos bíblicos fundamentales:</p>
-                <ul style="padding-left:1.5rem; line-height:1.8; color:var(--muted-text);">
-                    <li><strong>Génesis 2:2-3</strong> — "Bendijo Dios al día séptimo, y lo santificó."</li>
-                    <li><strong>Éxodo 20:8-11</strong> — "Acuérdate del día de reposo para santificarlo."</li>
-                    <li><strong>Isaías 58:13-14</strong> — "Si llamares al sábado delicia, santo... entonces te
                         deleitarás en Jehová."</li>
                 </ul>
             </div>
@@ -3119,17 +2560,59 @@
     <!-- ==================== DIEZMO ==================== -->
     <div id="diezmo" class="page">
         <button class="back-link" onclick="showPage('home')"><i class="fas fa-arrow-left"></i> Volver</button>
-        <div class="service-box">
-            <h2><i class="fas fa-hand-holding-heart"></i> Diezmos y Ofrendas</h2>
-            <p><strong>📖 Diezmo:</strong> "Traed todos los diezmos al alfolí..." (Malaquías 3:10)</p>
-            <p><strong>📖 Ofrenda:</strong> "Cada uno dé como propuso en su corazón..." (2 Corintios 9:7)</p>
-            <div class="nequi-box">
-                <p style="font-weight:600;">Envía tu diezmo u ofrenda a través de Nequi:</p>
-                <span class="nequi-number">300 000 0000</span>
-                <p style="margin-top:1rem;font-weight:700;color:var(--golden);">¡Dios bendiga tu fidelidad!</p>
+        <h2 class="page-title"><i class="fas fa-hand-holding-heart"></i> Diezmos y Ofrendas</h2>
+
+        <!-- Card principal con enlace externo -->
+        <div style="background: linear-gradient(135deg, #07192d 0%, #0b2b4f 100%); border-radius: 2rem; padding: 3rem 2.5rem; text-align: center; margin-bottom: 2rem; position: relative; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,0.2);">
+            <!-- Decoración -->
+            <div style="position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(201,157,59,0.12), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+            <div style="position: absolute; bottom: -40px; left: -40px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(201,157,59,0.08), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+
+            <div style="position: relative; z-index: 1;">
+                <div style="width: 80px; height: 80px; background: rgba(201,157,59,0.15); border: 2px solid rgba(201,157,59,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2.2rem; color: var(--golden);">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Administra tu Diezmo en Línea</h3>
+                <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 600px; margin: 0 auto 0.8rem; line-height: 1.7;">
+                    <em>"Traed todos los diezmos al alfolí y haya alimento en mi casa..."</em>
+                </p>
+                <p style="color: var(--golden-light); font-weight: 600; margin-bottom: 2rem;">— Malaquías 3:10</p>
+
+                <a href="https://alfoliadventista.org/" target="_blank" rel="noopener noreferrer"
+                    style="display: inline-flex; align-items: center; gap: 0.7rem; background: var(--golden); color: var(--deep-blue); padding: 1rem 2.8rem; border-radius: 3rem; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(201,157,59,0.4); letter-spacing: 0.3px;"
+                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 32px rgba(201,157,59,0.5)'"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(201,157,59,0.4)'">
+                    <i class="fas fa-external-link-alt"></i>
+                    Ir a Alfolí Adventista
+                </a>
+
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; margin-top: 1.2rem;">
+                    <i class="fas fa-lock" style="color: var(--golden);"></i>
+                    Plataforma oficial y segura de la Iglesia Adventista
+                </p>
             </div>
         </div>
+
+        <!-- Info adicional -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div style="background: white; border-radius: 1.4rem; padding: 1.8rem; border-left: 4px solid var(--golden); box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+                <h4 style="color: var(--deep-blue); margin-bottom: 0.8rem;"><i class="fas fa-bible" style="color: var(--golden);"></i> ¿Qué es el Diezmo?</h4>
+                <p style="color: var(--muted-text); line-height: 1.7; font-size: 0.95rem;">El diezmo es el 10% de nuestros ingresos que reconocemos como de Dios. Es un acto de fe y gratitud, no una obligación legal. Toda la vida — nuestro tiempo, talentos, cuerpo y posesiones — es de Dios.</p>
+            </div>
+            <div style="background: white; border-radius: 1.4rem; padding: 1.8rem; border-left: 4px solid #4caf50; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+                <h4 style="color: var(--deep-blue); margin-bottom: 0.8rem;"><i class="fas fa-heart" style="color: #4caf50;"></i> Las Ofrendas</h4>
+                <p style="color: var(--muted-text); line-height: 1.7; font-size: 0.95rem;">"Cada uno dé como propuso en su corazón, no con tristeza, ni por necesidad, porque Dios ama al dador alegre." (2 Corintios 9:7). Las ofrendas apoyan la misión local e internacional de la iglesia.</p>
+            </div>
+        </div>
+
+        <!-- Nequi info -->
+        <div class="nequi-box" style="text-align: center;">
+            <p style="font-weight:600; font-size: 1.05rem; margin-bottom: 0.5rem;">También puedes enviar tu ofrenda local a través de Nequi:</p>
+            <span class="nequi-number">300 000 0000</span>
+            <p style="margin-top:1rem;font-weight:700;color:var(--golden);">¡Dios bendice la fidelidad!</p>
+        </div>
     </div>
+
 
     <!-- ==================== PÁGINAS DE CRONOGRAMA PÚBLICO Y ACTIVIDADES ==================== -->
     <div id="cronograma" class="page"></div>
@@ -3238,7 +2721,12 @@
     </div>
 
     <!-- Módulos JavaScript (ORDEN CORRECTO) -->
-    <script src="js/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        if (typeof supabase === 'undefined' && typeof window.supabase === 'undefined') {
+            document.write('<script src="js/supabase.min.js"><\/script>');
+        }
+    </script>
     <script src="js/storage.js"></script>
     <script src="js/supabase-client.js"></script>
     <script src="js/app.js"></script>
@@ -3821,6 +3309,7 @@
                 <!-- Se llena dinámicamente con JS -->
             </div>
         </div>
+    </div>
 
 </body>
 

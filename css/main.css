@@ -3,114 +3,145 @@
    IASD Belén · Iglesia Adventista
    ======================================== */
 
-/* ==================== NAVBAR ==================== */
+/* ==================== NAVBAR PROFESIONAL ==================== */
+.navbar-wrapper {
+    background: linear-gradient(135deg, #07192d 0%, #0b2b4f 60%, #102a47 100%);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.35);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid rgba(201, 157, 59, 0.4);
+}
+
 .navbar {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 1.2rem 0;
-    flex-wrap: wrap;
-    gap: 1rem;
+    padding: 1rem 0 0.6rem;
+    gap: 0.7rem;
     position: relative;
     z-index: 100;
 }
 
+/* Logo row - centrado */
+.navbar-logo-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+}
+
 .logo {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.4rem;
     text-decoration: none;
     cursor: pointer;
 }
 
 .logo-img {
-    height: 45px;
+    height: 72px;
     width: auto;
     object-fit: contain;
-    border-radius: 6px;
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    filter: drop-shadow(0 4px 16px rgba(201,157,59,0.3));
 }
 
 .logo-img:hover {
-    transform: scale(1.05);
-    filter: brightness(1.05);
+    transform: scale(1.08);
+    filter: drop-shadow(0 6px 20px rgba(201,157,59,0.5));
 }
 
 .logo span {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-    font-size: 1.4rem;
-    background: linear-gradient(135deg, var(--deep-blue), var(--deep-blue-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 2px;
+    text-transform: uppercase;
     white-space: nowrap;
 }
 
+/* Nav links row */
 .nav-links {
     display: flex;
-    gap: 0.25rem;
+    gap: 0.15rem;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    padding-bottom: 0.3rem;
 }
 
 .nav-btn {
-    padding: 0.5rem 1rem;
+    padding: 0.45rem 0.9rem;
     border-radius: var(--radius-btn);
     font-weight: 600;
-    font-size: 0.85rem;
-    transition: var(--transition);
+    font-size: 0.82rem;
+    transition: all 0.25s ease;
     cursor: pointer;
     background: transparent;
     border: none;
     font-family: 'Inter', sans-serif;
-    color: var(--dark-text);
+    color: rgba(255,255,255,0.82);
     display: flex;
     align-items: center;
     gap: 0.3rem;
+    letter-spacing: 0.3px;
 }
 
 .nav-btn:hover {
-    background: rgba(201, 157, 59, 0.10);
-    color: var(--golden);
+    background: rgba(201, 157, 59, 0.18);
+    color: var(--golden-light);
+    transform: translateY(-1px);
 }
 
 .nav-btn.active {
-    background: var(--deep-blue);
-    color: white;
+    background: rgba(201, 157, 59, 0.22);
+    color: var(--golden-light);
+    border-bottom: 2px solid var(--golden);
 }
 
 .nav-btn.primary {
-    background: var(--deep-blue);
+    background: rgba(255,255,255,0.10);
     color: white;
+    border: 1px solid rgba(255,255,255,0.18);
 }
 
 .nav-btn.primary:hover {
-    background: var(--deep-blue-light);
+    background: rgba(255,255,255,0.18);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(11, 43, 79, 0.25);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .nav-btn.golden {
     background: var(--golden);
-    color: white;
+    color: var(--deep-blue);
+    font-weight: 700;
 }
 
 .nav-btn.golden:hover {
-    background: #b8892e;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px var(--golden-glow);
+    background: var(--golden-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(201,157,59,0.4);
 }
 
 /* Botón Menú Hamburguesa para Móvil */
 .mobile-menu-toggle {
     display: none;
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--deep-blue);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 1.3rem;
+    color: white;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.6rem;
+    transition: all 0.2s ease;
+}
+.mobile-menu-toggle:hover {
+    background: rgba(201,157,59,0.25);
+    border-color: var(--golden);
 }
 
 /* Dropdown */
@@ -118,28 +149,25 @@
     position: relative;
 }
 
-/* ✅ Código corregido (para desktop) */
 .dropdown-menu {
     position: absolute;
-    top: 100%;
-    /* Se coloca debajo del elemento padre */
+    top: calc(100% + 6px);
     left: 0;
-    /* Alineado a la izquierda */
     right: auto;
-    /* Asegura que no se vaya a la derecha */
 
-    background: var(--pure-white);
+    background: #ffffff;
     min-width: 210px;
-    border-radius: 1.2rem;
+    border-radius: 1rem;
     padding: 0.5rem 0;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.08);
     opacity: 0;
     visibility: hidden;
     transform: translateY(8px) scale(0.96);
-    transition: var(--transition);
-    border: 1px solid rgba(201, 157, 59, 0.12);
+    transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(201, 157, 59, 0.18);
+    border-top: 3px solid var(--golden);
     list-style: none;
-    z-index: 100;
+    z-index: 200;
 }
 
 .dropdown:hover>.dropdown-menu,
@@ -222,23 +250,113 @@
     transform: translateX(0) scale(1) !important;
 }
 
+/* ==================== BARRA DE PROGRESO DE NAVEGACIÓN ==================== */
+#pageProgressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: linear-gradient(90deg, #c99d3b, #fce293, #c99d3b);
+    box-shadow: 0 0 14px rgba(201, 157, 59, 0.9), 0 0 4px #ffffff;
+    z-index: 9999999;
+    transition: width 0.32s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.25s ease;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 0 2px 2px 0;
+}
+
+#pageProgressBar.animating {
+    opacity: 1;
+}
+
 /* ==================== PÁGINAS Y TRANSICIONES ==================== */
 .page {
     display: none;
-    animation: fadeUp 0.45s ease forwards;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 1.8rem 4rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .page.active {
-    display: block;
+    display: block !important;
+    animation: pageEnter 0.48s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
+.page.page-exit {
+    animation: pageExit 0.2s ease forwards;
+}
 
+@keyframes pageEnter {
+    0% {
+        opacity: 0;
+        transform: translateY(32px) scale(0.985);
+        filter: blur(4px);
+    }
+    60% {
+        opacity: 0.95;
+        transform: translateY(-2px) scale(1.002);
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+    }
+}
+
+@keyframes pageExit {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
     to {
+        opacity: 0;
+        transform: translateY(-16px) scale(0.985);
+        filter: blur(3px);
+    }
+}
+
+/* Stagger entrance on cards when a page activates */
+.page.active .service-box,
+.page.active .card,
+.page.active .creencia-card,
+.page.active .creencia-card-hover,
+.page.active .visitor-box,
+.page.active .mv-card-hover,
+.page.active .versiculo-card-hover,
+.page.active .faq-card-hover {
+    animation: cardEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.page.active .service-box:nth-child(1),
+.page.active .creencia-card-hover:nth-child(1),
+.page.active .card:nth-child(1) { animation-delay: 0.04s; }
+.page.active .service-box:nth-child(2),
+.page.active .creencia-card-hover:nth-child(2),
+.page.active .card:nth-child(2) { animation-delay: 0.08s; }
+.page.active .service-box:nth-child(3),
+.page.active .creencia-card-hover:nth-child(3),
+.page.active .card:nth-child(3) { animation-delay: 0.12s; }
+.page.active .service-box:nth-child(4),
+.page.active .creencia-card-hover:nth-child(4),
+.page.active .card:nth-child(4) { animation-delay: 0.16s; }
+.page.active .service-box:nth-child(5),
+.page.active .creencia-card-hover:nth-child(5),
+.page.active .card:nth-child(5) { animation-delay: 0.20s; }
+.page.active .service-box:nth-child(6),
+.page.active .creencia-card-hover:nth-child(6),
+.page.active .card:nth-child(6) { animation-delay: 0.24s; }
+
+@keyframes cardEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
@@ -248,35 +366,41 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin: 1.2rem 0 1.5rem;
+    margin: 1rem 0 1.5rem;
     font-weight: 600;
     color: var(--deep-blue);
     cursor: pointer;
-    transition: var(--transition);
-    padding: 0.4rem 0.8rem;
+    transition: all 0.25s ease;
+    padding: 0.5rem 1.2rem;
     border-radius: 2rem;
-    border: none;
-    background: transparent;
+    border: 1px solid rgba(11, 43, 79, 0.15);
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .back-link:hover {
     color: var(--golden);
-    background: rgba(201, 157, 59, 0.08);
+    border-color: var(--golden);
+    background: rgba(201, 157, 59, 0.06);
+    transform: translateX(-3px);
 }
 
 .page-title {
     font-family: var(--font-heading, 'Playfair Display', serif);
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
     font-weight: 700;
     color: var(--deep-blue);
-    margin: 1.2rem 0 1.8rem;
+    margin: 1rem 0 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.8rem;
+    line-height: 1.3;
+    flex-wrap: wrap;
 }
 
 .page-title i {
     color: var(--golden);
+    flex-shrink: 0;
 }
 
 /* ==================== HERO SECTION ==================== */
@@ -422,26 +546,32 @@
     }
 
     /* --- NAVBAR RESPONSIVE --- */
+    .navbar-wrapper {
+        position: sticky;
+        top: 0;
+        z-index: 2000;
+    }
+
     .navbar {
-        padding: 0.8rem 0;
-        position: relative;
-        z-index: 1000;
-        display: flex;
+        padding: 0.6rem 0 0.3rem;
+        flex-direction: row;
         flex-wrap: wrap;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
+        gap: 0;
     }
 
     .logo-img {
-        height: 35px;
+        height: 44px;
     }
 
     .logo span {
-        font-size: 1.05rem;
+        font-size: 0.7rem;
+        letter-spacing: 1.5px;
     }
 
     .logo {
-        gap: 0.5rem;
+        gap: 0.3rem;
         z-index: 1001;
     }
 
@@ -449,20 +579,20 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
-        background: rgba(201, 157, 59, 0.12);
-        color: var(--deep-blue);
-        font-size: 1.3rem;
-        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.12);
+        color: white;
+        font-size: 1.2rem;
+        border: 1px solid rgba(255,255,255,0.2);
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
         z-index: 1001;
     }
 
     .mobile-menu-toggle:active {
-        background: rgba(201, 157, 59, 0.25);
+        background: rgba(201, 157, 59, 0.35);
     }
 
     .nav-links {
@@ -474,12 +604,12 @@
         width: 100%;
         flex-direction: column;
         align-items: stretch;
-        background: var(--pure-white);
+        background: #0b2b4f;
         padding: 1.2rem 1rem;
-        border-radius: 1.6rem;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
-        margin-top: 0.5rem;
-        border: 1px solid rgba(201, 157, 59, 0.2);
+        border-radius: 0 0 1.4rem 1.4rem;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        margin-top: 0;
+        border-top: 1px solid rgba(201,157,59,0.25);
         max-height: 82vh;
         overflow-y: auto;
         opacity: 0;
@@ -506,8 +636,8 @@
         box-sizing: border-box;
         border: none;
         background: transparent;
-        color: var(--deep-blue);
-        transition: all 0.3s ease;
+        color: rgba(255,255,255,0.85);
+        transition: all 0.2s ease;
     }
 
     .dropdown.open>.nav-btn {
